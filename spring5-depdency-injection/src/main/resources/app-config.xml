@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Shipping Providers -->
+	<bean id="fedex" class="org.baeldung.service.shipment.FedexService" />
+	<bean id="usps" class="org.baeldung.service.shipment.UspsService" />
+	<bean id="ups" class="org.baeldung.service.shipment.UpsService" />
+
+	<!-- Constructor based dependency injection example -->
+	<bean id="shipmentBean" class="org.baeldung.service.ShipmentService">
+		<constructor-arg ref="fedex"></constructor-arg>
+	</bean>
+
+	<bean  id="order" class="org.baeldung.service.OrderService">
+		<!-- Setter based dependency injection example with bean being defined in java config file PaymentConfig-->
+		<property name="paymentService" ref="paymentBean"></property>
+		<!-- Setter based dependency injection example -->
+		<property name="shippmentService" ref="shipmentBean"></property>
+	</bean>
+
+</beans>

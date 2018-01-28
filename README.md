@@ -1,2 +1,2 @@
 # Spring Recepies
-This repositpry has a collection of all the Spring related examples.
+This repository has a collection of all the Spring related examples.
